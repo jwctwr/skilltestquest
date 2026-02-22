@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAccessToken } from './auth';  // Импортируем функцию получения токена
 
-const API_URL = 'http://127.0.0.1:8000/api/';
+const API_URL = 'https://skilltestquest.onrender.com/api/';
 
 const api = axios.create({
   baseURL: API_URL,
