@@ -1,20 +1,11 @@
 services:
   - type: web
-    name: skilltestquest-backend
+    name: skilltestquest-api
     runtime: python
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
-    startCommand: gunicorn skilltestquest.wsgi:application
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn skilltestquest.wsgi:application"
     envVars:
-      - key: DJANGO_SECRET_KEY
-        generateValue: true
-      - key: DJANGO_DEBUG
-        value: False
-      - key: DATABASE_URL
-        fromDatabase:
-          name: skilltestquest-db
-          property: connectionString
-
-databases:
-  - name: skilltestquest-db
-    databaseName: skilltestquest
-    user: skilltestquest_user
+      - key: DJANGO_SETTINGS_MODULE
+        value: skilltestquest.settings
+      - key: PYTHON_VERSION
+        value: 3.11.0

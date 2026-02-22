@@ -138,41 +138,34 @@ SIMPLE_JWT = {
 }
 
 import os
-import dj_database_url
-
-# Безопасность
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-your-secret-key-here')
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 # Разрешенные хосты
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+ALLOWED_HOSTS = ['*']  # для теста, потом замените на свой домен
 
-# База данных
-import dj_database_url
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600
-    )
-}
+# Настройки для продакшена
+DEBUG = False
 
 # Статические файлы
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Добавьте whitenoise в MIDDLEWARE (в начало списка)
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Добавьте эту строку
-    'corsheaders.middleware.CorsMiddleware',
-    # ... остальные middleware
-]
+# Если есть медиа файлы
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Безопасность
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# База данных (Render предоставляет PostgreSQL)
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+}
 
 # CORS для продакшена
 CORS_ALLOWED_ORIGINS = [
+    'https://your-frontend-domain.com',  # замените на свой фронтенд
     'http://localhost:3000',
-    'https://your-frontend.onrender.com',  # замените потом
 ]
-
-import os
