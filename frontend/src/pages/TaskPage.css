@@ -1,0 +1,322 @@
+.task-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 80px;
+}
+
+.task-container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+.task-header {
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.task-header h1 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.task-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.difficulty-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.difficulty-badge.easy {
+  background: #28a745;
+  color: white;
+}
+
+.difficulty-badge.medium {
+  background: #ffc107;
+  color: #333;
+}
+
+.difficulty-badge.hard {
+  background: #dc3545;
+  color: white;
+}
+
+.task-type-badge {
+  padding: 5px 12px;
+  background: #e9ecef;
+  border-radius: 20px;
+  color: #495057;
+}
+
+.attempts-badge {
+  padding: 5px 12px;
+  background: #17a2b8;
+  border-radius: 20px;
+  color: white;
+}
+
+.task-body {
+  min-height: 300px;
+}
+
+.task-question {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Плейсхолдеры для разных типов заданий */
+.bug-image-placeholder {
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6c757d;
+  font-size: 1.1em;
+}
+
+.match-placeholder {
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6c757d;
+  font-size: 1.1em;
+}
+
+/* Форма ответа */
+.answer-form {
+  margin-top: 20px;
+}
+
+.answer-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+}
+
+.answer-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Результат */
+.result-container {
+  margin-top: 20px;
+}
+
+.result-message {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.result-message.correct {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.result-message.incorrect {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.result-icon {
+  font-size: 24px;
+}
+
+.next-task-prompt {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.next-task-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.next-task-info h3 {
+  color: #333;
+  font-size: 1.2em;
+}
+
+.next-task-button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.next-task-button:hover {
+  background: #218838;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .task-container {
+    padding: 20px;
+  }
+  
+  .task-header h1 {
+    font-size: 1.5em;
+  }
+  
+  .task-meta {
+    flex-direction: column;
+  }
+  
+  .difficulty-badge, .task-type-badge, .attempts-badge {
+    align-self: flex-start;
+  }
+}
+
+/* Множественный выбор */
+.options-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.option-button {
+  padding: 15px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.option-button:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.option-button.selected {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Найди баг */
+.bug-image-container {
+  position: relative;
+  margin: 20px 0;
+}
+
+.bug-image {
+  max-width: 100%;
+  border-radius: 10px;
+  cursor: crosshair;
+}
+
+.bug-area {
+  position: absolute;
+  border: 2px dashed #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  cursor: pointer;
+}
+
+.bug-area:hover {
+  background: rgba(255, 68, 68, 0.3);
+}
+
+/* Сопоставление */
+.match-game {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.match-left, .match-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.match-item {
+  padding: 15px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.match-item:hover {
+  background: #e9ecef;
+}
+
+.match-item.selected {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.match-item.matched {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

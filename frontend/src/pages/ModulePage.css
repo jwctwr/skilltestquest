@@ -1,0 +1,222 @@
+.module-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  transition: background 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.module-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.module-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.module-description {
+  font-size: 1.2em;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tasks-section {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.tasks-section h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 1.8em;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.task-card {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  border-left: 5px solid;
+  transition: all 0.3s;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.task-card.difficulty-easy {
+  border-left-color: #28a745;
+  background: linear-gradient(to right, #f8f9fa, #f0f9f0);
+}
+
+.task-card.difficulty-medium {
+  border-left-color: #ffc107;
+  background: linear-gradient(to right, #f8f9fa, #fff9e6);
+}
+
+.task-card.difficulty-hard {
+  border-left-color: #dc3545;
+  background: linear-gradient(to right, #f8f9fa, #fff0f0);
+}
+
+.task-number {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.task-card h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  padding-right: 70px;
+  font-weight: 600;
+}
+
+.task-description {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+
+.task-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.difficulty-badge {
+  padding: 5px 15px;
+  border-radius: 25px;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.difficulty-badge.easy {
+  background: #28a745;
+  color: white;
+  box-shadow: 0 2px 5px rgba(40, 167, 69, 0.3);
+}
+
+.difficulty-badge.medium {
+  background: #ffc107;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(255, 193, 7, 0.3);
+}
+
+.difficulty-badge.hard {
+  background: #dc3545;
+  color: white;
+  box-shadow: 0 2px 5px rgba(220, 53, 69, 0.3);
+}
+
+.task-type {
+  padding: 5px 15px;
+  background: #e9ecef;
+  border-radius: 25px;
+  color: #495057;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.start-task-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.start-task-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .module-header h1 {
+    font-size: 2em;
+  }
+  
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tasks-section {
+    padding: 20px;
+  }
+  
+  .task-card h3 {
+    font-size: 1.2em;
+  }
+}
+
+/* Анимация загрузки */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.loading {
+  animation: pulse 1.5s infinite;
+}

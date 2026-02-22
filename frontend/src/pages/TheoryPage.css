@@ -1,0 +1,207 @@
+.theory-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
+
+.theory-header {
+  text-align: center;
+  color: white;
+  margin: 30px 0;
+}
+
+.theory-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.theory-header p {
+  font-size: 1.2em;
+  opacity: 0.9;
+}
+
+.theory-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  min-height: 500px;
+}
+
+/* Боковое меню */
+.theory-sidebar {
+  background: #f8f9fa;
+  padding: 25px;
+  border-right: 1px solid #e9ecef;
+}
+
+.theory-sidebar h3 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #667eea;
+}
+
+.module-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.module-button {
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.module-button:hover {
+  background: #e9ecef;
+}
+
+.module-button.active {
+  background: #667eea;
+  color: white;
+}
+
+.theory-list {
+  list-style: none;
+  padding-left: 15px;
+  margin: 10px 0;
+}
+
+.theory-button {
+  width: 100%;
+  text-align: left;
+  padding: 8px 15px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.theory-button:hover {
+  background: #e9ecef;
+  color: #333;
+}
+
+.theory-button.active {
+  background: #764ba2;
+  color: white;
+}
+
+.no-theory {
+  padding: 10px 15px;
+  color: #999;
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* Основная область */
+.theory-main {
+  padding: 30px;
+  background: white;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.theory-content h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 2em;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.theory-text {
+  color: #333;
+  line-height: 1.8;
+}
+
+.theory-text p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.theory-text h3 {
+  margin: 30px 0 15px;
+  color: #667eea;
+}
+
+.theory-text ul, .theory-text ol {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.theory-text li {
+  margin-bottom: 8px;
+}
+
+.theory-text code {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #dc3545;
+}
+
+.theory-text pre {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid #e9ecef;
+}
+
+.theory-placeholder {
+  text-align: center;
+  padding: 100px 20px;
+  color: #999;
+}
+
+.theory-placeholder h2 {
+  color: #667eea;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+.theory-placeholder p {
+  font-size: 1.1em;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .theory-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .theory-sidebar {
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .theory-main {
+    max-height: none;
+  }
+  
+  .theory-header h1 {
+    font-size: 2em;
+  }
+}
