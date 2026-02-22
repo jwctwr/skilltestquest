@@ -136,3 +136,43 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
+
+import os
+import dj_database_url
+
+# Безопасность
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-your-secret-key-here')
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+
+# Разрешенные хосты
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+
+# База данных
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600
+    )
+}
+
+# Статические файлы
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Добавьте whitenoise в MIDDLEWARE (в начало списка)
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Добавьте эту строку
+    'corsheaders.middleware.CorsMiddleware',
+    # ... остальные middleware
+]
+
+# CORS для продакшена
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://your-frontend.onrender.com',  # замените потом
+]
+
+import os
