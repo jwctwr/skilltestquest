@@ -1,7 +1,18 @@
 import axios from 'axios';
-import { getAccessToken } from './auth';  // Импортируем функцию получения токена
+import { getAccessToken } from './auth';
 
-const API_URL = 'https://skilltestquest.onrender.com/api/';
+// Определяем базовый URL в зависимости от окружения
+const getBaseUrl = () => {
+  // Проверяем, находимся ли мы на Render (продакшен)
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return 'https://skilltestquest.onrender.com/api/';
+  }
+  // Локальная разработка
+  return 'http://127.0.0.1:8000/api/';
+};
+
+const API_URL = getBaseUrl();
+console.log('API URL:', API_URL); // для отладки
 
 const api = axios.create({
   baseURL: API_URL,
@@ -10,15 +21,12 @@ const api = axios.create({
   },
 });
 
-// Добавляем перехватчик запросов для добавления токена
+// Добавляем токен к запросам
 api.interceptors.request.use(
   (config) => {
     const token = getAccessToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-      console.log('Токен добавлен к запросу:', token.substring(0, 20) + '...');
-    } else {
-      console.log('Токен не найден');
     }
     return config;
   },
@@ -35,12 +43,11 @@ export const getModule = (id) => api.get(`modules/${id}/`);
 export const getTasks = (params = {}) => api.get('tasks/', { params });
 export const getTask = (id) => api.get(`tasks/${id}/`);
 
-// Функция для проверки ответа - больше не передаем user_id
+// Функция для проверки ответа
 export const checkAnswer = (taskId, answer) => {
   return api.post('check-answer/', {
     task_id: taskId,
     answer: answer
-    // user_id больше не нужен - берется из токена
   });
 };
 
