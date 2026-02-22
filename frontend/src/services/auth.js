@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000/api/';
+// Используем ту же логику для определения URL
+const getBaseUrl = () => {
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return 'https://skilltestquest.onrender.com/api/';
+  }
+  return 'http://127.0.0.1:8000/api/';
+};
+
+const API_URL = getBaseUrl();
 
 // Сохраняем токены
 export const setTokens = (access, refresh) => {
@@ -12,22 +20,11 @@ export const setTokens = (access, refresh) => {
 export const getAccessToken = () => localStorage.getItem('access_token');
 export const getRefreshToken = () => localStorage.getItem('refresh_token');
 
-// Сохраняем имя пользователя
-export const setUserInfo = (username) => {
-  localStorage.setItem('username', username);
-};
-
 // Удаляем токены (выход)
 export const logout = () => {
   localStorage.removeItem('access_token');
   localStorage.removeItem('refresh_token');
   localStorage.removeItem('username');
-};
-
-// Проверяем, авторизован ли пользователь
-export const isAuthenticated = () => {
-  const token = getAccessToken();
-  return !!token;
 };
 
 // Получаем информацию о пользователе
@@ -36,7 +33,6 @@ export const getUser = () => {
   if (!token) return null;
   
   try {
-    // Пробуем получить из токена (user_id)
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const payload = JSON.parse(atob(base64));
@@ -69,8 +65,13 @@ export const login = async (username, password) => {
   
   if (response.data.access) {
     setTokens(response.data.access, response.data.refresh);
-    setUserInfo(username);
+    localStorage.setItem('username', username);
   }
   
   return response.data;
+};
+
+// Сохраняем имя пользователя
+export const setUserInfo = (username) => {
+  localStorage.setItem('username', username);
 };
