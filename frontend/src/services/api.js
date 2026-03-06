@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { getAccessToken } from './auth';
 
-// Определяем базовый URL в зависимости от окружения
+// Определяем базовый URL 
 const getBaseUrl = () => {
-  // Проверяем, находимся ли мы на Render (продакшен)
+  //  находимся ли мы на Render
   if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
     return 'https://skilltestquest.onrender.com/api/';
   }
@@ -21,7 +21,7 @@ const api = axios.create({
   },
 });
 
-// Добавляем токен к запросам
+// токен к запросам
 api.interceptors.request.use(
   (config) => {
     const token = getAccessToken();
@@ -35,15 +35,15 @@ api.interceptors.request.use(
   }
 );
 
-// Функции для работы с модулями
+// для работы с модулями
 export const getModules = () => api.get('modules/');
 export const getModule = (id) => api.get(`modules/${id}/`);
 
-// Функции для работы с заданиями
+// с заданиями
 export const getTasks = (params = {}) => api.get('tasks/', { params });
 export const getTask = (id) => api.get(`tasks/${id}/`);
 
-// Функция для проверки ответа
+// для проверки ответа
 export const checkAnswer = (taskId, answer) => {
   return api.post('check-answer/', {
     task_id: taskId,
@@ -51,10 +51,10 @@ export const checkAnswer = (taskId, answer) => {
   });
 };
 
-// Функция для получения прогресса пользователя
+// для получения прогресса пользователя
 export const getUserProgress = (userId) => api.get(`user-progress/${userId}/`);
 
-// Функция для получения статистики пользователя
+// для получения статистики пользователя
 export const getUserStatistics = () => api.get('user-statistics/');
 
 export default api;
