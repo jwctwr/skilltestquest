@@ -31,7 +31,7 @@ function RegisterPage() {
       return;
     }
 
-    // Проверка длины пароля
+    // Проверка длины
     if (formData.password.length < 3) {
       setError('Пароль должен быть не менее 3 символов');
       return;
@@ -46,12 +46,12 @@ function RegisterPage() {
       // После успешной регистрации автоматически входим
       await login(formData.username, formData.password);
       
-      // Переходим на главную
+      // на главную
       navigate('/');
     } catch (err) {
       console.error('Ошибка регистрации:', err);
       
-      // Обрабатываем разные типы ошибок
+      // разные типы ошибок
       if (err.response?.data?.error) {
         setError(err.response.data.error);
       } else if (err.response?.data?.username) {
