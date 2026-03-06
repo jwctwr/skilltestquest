@@ -66,7 +66,7 @@ const loadModules = async () => {
 
   const handleLogout = () => {
   logout();           // удаляем токены
-  setUser(null);      // очищаем пользователя в состоянии
+  setUser(null);      // очищаем пользователя 
 };
 
   return (
