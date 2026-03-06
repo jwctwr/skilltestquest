@@ -149,6 +149,6 @@ DATABASES = {
 
 # CORS для продакшена
 CORS_ALLOWED_ORIGINS = [
-    'https://your-frontend-domain.com',  # замените на свой фронтенд
+    'https://skilltestquest-frontend.onrender.com',
     'http://localhost:3000',
 ]
