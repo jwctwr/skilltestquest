@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// Используем ту же логику для определения URL
+// URL
 const getBaseUrl = () => {
   if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
     return 'https://skilltestquest.onrender.com/api/';
@@ -10,7 +10,7 @@ const getBaseUrl = () => {
 
 const API_URL = getBaseUrl();
 
-// Сохраняем токены
+// Сохр токены
 export const setTokens = (access, refresh) => {
   localStorage.setItem('access_token', access);
   localStorage.setItem('refresh_token', refresh);
@@ -20,14 +20,14 @@ export const setTokens = (access, refresh) => {
 export const getAccessToken = () => localStorage.getItem('access_token');
 export const getRefreshToken = () => localStorage.getItem('refresh_token');
 
-// Удаляем токены (выход)
+// выход
 export const logout = () => {
   localStorage.removeItem('access_token');
   localStorage.removeItem('refresh_token');
   localStorage.removeItem('username');
 };
 
-// Получаем информацию о пользователе
+// инфа о пользователе
 export const getUser = () => {
   const token = getAccessToken();
   if (!token) return null;
@@ -71,7 +71,7 @@ export const login = async (username, password) => {
   return response.data;
 };
 
-// Сохраняем имя пользователя
+// Сохр имя пользователя
 export const setUserInfo = (username) => {
   localStorage.setItem('username', username);
 };
