@@ -4,7 +4,7 @@ import { getTasks, getModule } from '../services/api';
 import './ModulePage.css';
 
 function ModulePage() {
-  const { id } = useParams(); // получаем id модуля из URL
+  const { id } = useParams(); // получаем id модуля 
   const navigate = useNavigate();
   
   const [module, setModule] = useState(null);
@@ -19,11 +19,11 @@ function ModulePage() {
   const loadModuleData = async () => {
     try {
       setLoading(true);
-      // Загружаем информацию о модуле
+      // инфа о модуле
       const moduleResponse = await getModule(id);
       setModule(moduleResponse.data);
       
-      // Загружаем задания этого модуля
+      // Задания этого модуля
       const tasksResponse = await getTasks({ module: id });
       setTasks(tasksResponse.data);
       
@@ -37,7 +37,7 @@ function ModulePage() {
   };
 
   const startTask = (taskId) => {
-    navigate(`/task/${taskId}`); // переходим на страницу задания
+    navigate(`/task/${taskId}`); // страница задания
   };
 
   if (loading) return <div className="loading">Загрузка...</div>;
