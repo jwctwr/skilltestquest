@@ -106,7 +106,7 @@ function ForumPage() {
         parent: commentId
       });
       
-      // Обновляем список комментариев
+      // Обновляем список коммов
       const updatedComments = comments.map(comment => {
         if (comment.id === commentId) {
           return {
