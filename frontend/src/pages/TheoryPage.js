@@ -23,7 +23,7 @@ function TheoryPage() {
       const modulesResponse = await api.get('modules/');
       setModules(modulesResponse.data);
       
-      // Загружаем статьи теории
+      // статьи теории
       const theoryResponse = await api.get('theory/');
       setTheories(theoryResponse.data);
       
@@ -45,7 +45,7 @@ function TheoryPage() {
   const renderTheoryContent = () => {
     if (!selectedTheory) return null;
     
-    // Разбиваем контент на абзацы
+    // на абзацы
     const paragraphs = selectedTheory.content.split('\n\n');
     
     return (
