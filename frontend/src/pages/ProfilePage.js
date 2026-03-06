@@ -17,7 +17,7 @@ function ProfilePage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Проверяем, авторизован ли пользователь
+    // проверка авторизации
     const currentUser = getUser();
     if (!currentUser) {
       navigate('/login');
