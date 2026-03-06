@@ -4,14 +4,14 @@ from .models import Theory
 
 @admin.register(Module)
 class ModuleAdmin(admin.ModelAdmin):
-    list_display = ['title', 'order']  # что показывать в списке
-    list_editable = ['order']  # можно редактировать прямо в списке
+    list_display = ['title', 'order']  # что в списке
+    list_editable = ['order']  # можно редактировать 
     search_fields = ['title']  # поиск по названию
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     list_display = ['title', 'module', 'difficulty', 'task_type']
-    list_filter = ['module', 'difficulty', 'task_type']  # фильтры справа
+    list_filter = ['module', 'difficulty', 'task_type']  # фильтры 
     search_fields = ['title', 'description']
     list_editable = ['difficulty']
 
