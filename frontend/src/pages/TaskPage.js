@@ -67,7 +67,7 @@ function TaskPage() {
     
     let finalAnswer = answer;
     
-    // Формируем ответ в зависимости от типа задания
+    // Формируем ответ
     if (task.task_type === 'multiple_choice') {
       if (selectedOption === null) {
         alert('Выберите вариант ответа');
