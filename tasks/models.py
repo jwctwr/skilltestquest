@@ -31,7 +31,7 @@ class Task(models.Model):
     difficulty = models.CharField('Сложность', max_length=10, choices=DIFFICULTY_CHOICES, default='medium')
     order = models.IntegerField('Порядок в модуле', default=0)
     
-    # Поля для разных типов заданий (как в таблице)
+    # Поля для разных типов заданий 
     task_type = models.CharField('Тип задания', max_length=50, default='text', 
                              choices=[
                                  ('text', 'Текстовый ответ'),
@@ -41,7 +41,7 @@ class Task(models.Model):
                                  ('multiple_choice', 'Множественный выбор'),
                              ])
     
-    # Дополнительные данные в JSON для сложных заданий
+    # Дополнительные данные в JSON 
     extra_data = models.JSONField('Дополнительные данные', default=dict, blank=True)
     
     class Meta:
@@ -64,7 +64,7 @@ class UserProgress(models.Model):
     class Meta:
         verbose_name = 'Прогресс пользователя'
         verbose_name_plural = 'Прогресс пользователей'
-        # Чтобы не было дубликатов (пользователь + задание)
+        # Чтобы не было дубликатов 
         unique_together = ['user', 'task']
     
     def __str__(self):
