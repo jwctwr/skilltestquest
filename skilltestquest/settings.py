@@ -142,9 +142,9 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # бд (Render с PostgreSQL)
-import dj_database_url
+import dj_database_url # kjggjg
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3') # yugjf
 }
 
 # CORS для продакшена
